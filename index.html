@@ -247,6 +247,20 @@ p.f-note { line-height: 1.5; }
 .f-node.f-on { background: var(--paper-100); color: var(--ink-950); }
 .f-node.f-on .f-k, .f-node.f-on .f-n { color: var(--gray-600); }
 
+/* 실제 화면 장 — 큰 화면은 여덟 칸, 폰 화면과 메모는 네 칸 */
+.shots { row-gap: 48px; align-items: start; }
+.shot { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.shot.wide { grid-column: 1 / 9; }
+.shot.narrow, .shots .memo { grid-column: 9 / 13; }
+.shot .img img { object-position: top; }
+.shot .duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+.shot figcaption { font-size: var(--fs-small); line-height: 1.55; color: var(--text-3); }
+.r1610 { aspect-ratio: 16 / 10; }
+.r32 { aspect-ratio: 3 / 2; }
+.rph { aspect-ratio: 390 / 838; }
+.memo { display: flex; flex-direction: column; gap: 16px; }
+.memo .desc { color: var(--text-2); font-size: var(--fs-small); }
+
 /* 태블릿 8칸 */
 @media (max-width: 1199px) {
   .meta .who { grid-column: 1 / 4; }
@@ -257,6 +271,10 @@ p.f-note { line-height: 1.5; }
   .feat .pic, .feat .side { grid-column: 1 / -1; }
   .feat .side { margin-top: 24px; }
   .ltop .th, .ltop .pics { grid-column: 1 / -1; }
+  .shot.wide { grid-column: 1 / -1; }
+  .shot.narrow { grid-column: 1 / 5; order: 1; }
+  .shots .memo { grid-column: 5 / 9; order: 2; }
+  .shot.s3 { order: 3; }
   .ltop .pics { margin-top: 32px; }
   .entry, .card { grid-column: span 4; }
   .irow .title { grid-column: 1 / 4; }
@@ -299,6 +317,11 @@ p.f-note { line-height: 1.5; }
   .f-rr { padding: 6px 0; column-gap: 8px; font-size: 11px; }
   .xflow { aspect-ratio: auto; }
   .f-flow { grid-template-columns: 1fr; gap: 6px; }
+  .shots { row-gap: 32px; }
+  .shot.narrow, .shots .memo { grid-column: 1 / -1; }
+  .shots .memo { order: 4; }
+  .shot .dash { aspect-ratio: 390 / 660; }
+  .shot .ai { aspect-ratio: 390 / 440; }
   .f-node { padding: 12px 14px; gap: 4px; }
   .f-node .f-v { font-size: 20px; }
 }
@@ -589,7 +612,7 @@ p.f-note { line-height: 1.5; }
 <div class="f-node"><span class="f-k">03 집계 행</span><span class="f-v num">633</span><span class="f-n">개인 기록 없이 익명 집계만</span></div>
 <div class="f-node f-on"><span class="f-k">04 운영 대조</span><span class="f-v">216칸 일치</span><span class="f-n">API와 배포 CSV를 기대값과 한 칸씩</span></div>
 </div>
-<p class="f-note">모두 합성 데이터이며 실제 시니어의 사용 기록이 아닙니다. 생성기 뼈대는 팀 하네스에서 왔고, 저는 앱 규칙에 맞게 고치고 적재·대조를 맡았습니다.</p>
+<p class="f-note">모두 합성 데이터이며 실제 시니어의 사용 기록이 아닙니다. 생성기 뼈대는 팀 하네스에서 왔고, 저는 앱 규칙에 맞게 고치고 적재 SQL·대조를 맡았습니다.</p>
 </div>
 <div class="side">
 <p class="title">「미리창구」는 시니어가 실제 돈이 오가지 않는 연습 화면에서 송금·공과금 납부·자동이체를 연습하는 웹 서비스입니다. 어디서 왜 막혔는지는 익명 집계로 금융회사 담당자에게 보여 줍니다.</p>
@@ -602,6 +625,40 @@ p.f-note { line-height: 1.5; }
 <div><span class="label r t3">Checks</span><span class="small">SQL 대조 37건 실패 0(PGlite · 실 DB 아님) · 운영 대조 216칸 일치</span></div>
 <div><span class="label r t3">AI Cards</span><span class="small">화면 0/3 → 3/3(입력에 화면 이름을 넣고 다시 실행)</span></div>
 <div><span class="label r t3">Result</span><span class="small num">2026.09.20 팀 제출</span></div>
+</div>
+</div>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread deep" aria-labelledby="h-miri-screens">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-miri-screens">Screens</h2><span class="label r t3 ko">미리창구 실제 화면</span></div>
+<p class="eyebrow">원티드 AI Championship 2026 · 배포판 캡처 · 2026.10.01</p>
+<div class="grid content shots">
+<figure class="shot wide">
+<picture class="img r1610 dash"><source media="(max-width: 767px)" srcset="assets/bw-miri-dashboard-m.png" width="780" height="1320"><img src="assets/bw-miri-dashboard-16x10.png" width="1760" height="1100" loading="lazy" alt="미리창구 담당자 대시보드입니다. 위에 「합성 로그 312건 기준 · 실사용 0건」과 「현재 표에 보이는 합성 로그 263건」이 적혀 있고, 과업별 완료율은 관리비 자동이체 28.6%, 공과금 납부 48.0%입니다. 넓은 화면에서는 손주에게 송금 58.5%와 이탈 단계 TOP3, 이탈 이유 상위 목록까지 보입니다."></picture>
+<figcaption>담당자 대시보드 첫 화면의 윗부분입니다. 머리글의 「연습창구」는 실제 은행 이름 대신 앱 안에서 쓰는 가상 기관 이름입니다. 합성 로그 312건 가운데 체험 채널 49건을 뺀 263건으로 과업별 완료율부터 보여 주고, 그 아래로 이탈 단계와 이탈 이유가 이어집니다. 단추의 「실사용 기준」은 이 범위를 고르는 이름일 뿐이고, 실사용은 0건이라고 화면 위쪽에 적혀 있습니다.</figcaption>
+</figure>
+<figure class="shot narrow">
+<div class="duo">
+<div class="img rph"><img src="assets/bw-miri-ask-phone.png" width="780" height="1688" loading="lazy" alt="시니어 연습의 첫 화면입니다. 「무엇이 어려우세요? 마이크를 누르고 말씀해주세요」 아래에 마이크 단추와 예시 세 개(손주한테 용돈 보내기, 공과금 내기, 자동이체 걸기)가 있습니다."></div>
+<div class="img rph"><img src="assets/bw-miri-step2-phone.png" width="780" height="1688" loading="lazy" alt="송금 연습 2단계 화면입니다. 맨 위에 「연습 화면입니다 · 실제 돈은 오가지 않아요」가 있고, 「받는 사람을 선택하세요」 아래에 가상의 받는 사람 두 명과 직접 입력하기, 다음으로 단추가 있습니다."></div>
+</div>
+<figcaption>시니어 연습 화면입니다. 하고 싶은 일을 말하거나 고르면(왼쪽) 고정된 연습 화면이 단계별로 이어집니다. 오른쪽은 송금 2단계입니다. 합성 로그 기준으로 대시보드의 시작 대비 이탈률이 31.4%인 단계입니다.</figcaption>
+</figure>
+<figure class="shot wide s3">
+<picture class="img r32 ai"><source media="(max-width: 767px)" srcset="assets/bw-miri-ai-cards-m.png" width="780" height="880"><img src="assets/bw-miri-ai-cards-3x2.png" width="1760" height="1174" loading="lazy" alt="대시보드의 AI 개선 제안 카드입니다. 「기본 스코프(user) 기준 · 캐시된 합성 데이터」라고 적혀 있고, 첫 카드는 관리비 자동이체 · 출금일의 가설과 개선안입니다. 넓은 화면에서는 공과금 납부 · 납부자 번호, 손주에게 송금 · 받는 사람 카드와 실사용 현황(시작 0, 완료 0)까지 보입니다."></picture>
+<figcaption>같은 대시보드의 AI 개선 제안입니다. 배치가 합성 로그 집계 숫자를 읽고 만들어 캐시에 둔 문장입니다. 첫 실행에서는 세 장 모두 단계와 다른 화면 이름을 불렀고, 입력에 화면 이름을 넣고 검사를 붙여 다시 돌렸습니다.</figcaption>
+</figure>
+<div class="memo">
+<p class="desc">화면 설계와 구현은 다른 팀원들(디자인 · 풀스택 · 실시간 LLM 담당)이 했고, 팀 동의를 받아 실었습니다. 제가 맡은 쪽은 이 화면에 나오는 숫자와 AI 제안 문장입니다.</p>
+<p class="desc">넘겨받은 합성 데이터를 앱 규칙에 맞게 고쳐 적재 SQL로 만들었고(운영 DB 적용은 풀스택 담당), 9월 14일에 화면 뒤 API 값을 기대값과 한 칸씩 대조했습니다.</p>
+<div class="kv">
+<div><span class="label r t3">Captured</span><span class="small num">2026.10.01 · 배포판 체험 경로</span></div>
+<div><span class="label r t3">Data</span><span class="small num">합성 로그 312건 · 실사용 0건</span></div>
+<div><span class="label r t3">Screens</span><span class="small">팀 디자인 · 풀스택 · 실시간 LLM 담당</span></div>
+<div><span class="label r t3">Mine</span><span class="small">합성 데이터 교정 · 적재 SQL · 집계 쿼리 · 제안 배치 · 숫자 대조</span></div>
 </div>
 </div>
 </div>
