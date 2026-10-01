@@ -266,6 +266,7 @@ p.f-note { line-height: 1.5; }
 .deck { row-gap: 48px; align-items: start; }
 .deck .memo { grid-column: 9 / 13; }
 .deck .w8 { grid-column: 1 / 9; }
+.deck .memo.half { grid-column: span 6; }
 .rgantt { aspect-ratio: 1760 / 703; }
 .f-rr.f-hi > span { color: var(--text); }
 .memo .title { color: var(--text); }
@@ -295,6 +296,7 @@ p.f-note { line-height: 1.5; }
   .ltop .th, .ltop .pics { grid-column: 1 / -1; }
   .shot.wide { grid-column: 1 / -1; }
   .deck .memo, .deck .w8 { grid-column: 1 / -1; }
+  .deck .memo.half { grid-column: span 4; }
   .shot.half { grid-column: span 4; }
   .p-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: 96px repeat(3, minmax(0, 1fr)); }
   .p-step { flex-direction: column; }
@@ -347,6 +349,7 @@ p.f-note { line-height: 1.5; }
   .shots { row-gap: 32px; }
   .shot .quad { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .deck { row-gap: 32px; }
+  .deck .memo.half { grid-column: 1 / -1; }
   .shot.half { grid-column: 1 / -1; }
   .p-grid { grid-template-columns: minmax(0, 1fr); }
   .p-lane, .p-cell.p-none { display: none; }
@@ -607,12 +610,12 @@ p.f-note { line-height: 1.5; }
 <div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
 <div class="th"><h2 class="lg" id="h-solar">Solar for Bid</h2><span class="label r t3 ko">입찰 문서 에이전트</span></div>
 <p class="eyebrow">JunctionX Korea 2026 · Upstage 트랙 · 2026.08.21 – 08.23</p>
-<div class="grid content feat">
-<figure class="shot pic">
+<div class="grid content deck">
+<figure class="shot half">
 <div class="img r169"><img src="assets/bw-solar-deck-p08.png" width="1344" height="756" loading="lazy" alt="발표 자료 8쪽입니다. 문서 한 건에서 다섯 갈래가 뻗고, 갈래마다 작은 네모가 길게 늘어서 쪽수가 많다는 것을 보여 줍니다."></div>
 <figcaption>발표 자료 8쪽(슬라이드 디자인은 팀 디자이너). 공고 한 건을 이해하려면 문서를 적어도 다섯 개 봐야 하고, 문서마다 100쪽을 넘기 일쑤입니다.</figcaption>
 </figure>
-<div class="side">
+<div class="memo half">
 <p class="title">회사 서류를 한 번 올려 두면, 고른 입찰 공고마다 참가 자격 판정과 요구사항 체크리스트, 제출 서류 점검표를 근거 쪽과 함께 내는 문서 에이전트입니다.</p>
 <p class="desc">입찰은 서류 하나가 빠져도 탈락할 수 있습니다. 그래서 그럴듯한 답보다 틀렸을 때의 처리가 더 중요했습니다. 모델의 답은 최종으로 받지 않고 백엔드가 한 번 더 셉니다.</p>
 <div class="kv">
@@ -631,11 +634,19 @@ p.f-note { line-height: 1.5; }
 <div class="th"><h2 class="lg" id="h-solar-deck">Deck</h2><span class="label r t3 ko">Solar for Bid 화면 시안</span></div>
 <p class="eyebrow">JunctionX Korea 2026 · Upstage 트랙 · 발표 자료 25장 중 12 · 14 · 15쪽</p>
 <div class="grid content deck">
-<figure class="shot wide">
+<figure class="shot half">
 <div class="img r169"><img src="assets/bw-solar-deck-p12.png" width="1344" height="756" loading="lazy" alt="발표 자료 12쪽 01 Company Registration입니다. 서류를 끌어다 놓는 칸과 회사 카드 미리보기 화면이 있고, 재무와 인력 칸에는 미확인 표시가 붙어 있습니다. 가상 회사 이름과 파일 이름, 등록·지정 칸의 값은 회색 막대로 가렸습니다."></div>
 <figcaption>12쪽 · 01 회사 등록. 회사 서류를 올리면 Upstage Studio의 Parse와 Extract가 읽어 회사 정보를 채웁니다. 서류가 없는 칸은 「미확인」으로 남습니다.</figcaption>
 </figure>
-<div class="memo">
+<figure class="shot half">
+<div class="img r169"><img src="assets/bw-solar-deck-p14.png" width="1344" height="756" loading="lazy" alt="발표 자료 14쪽 03 Bid Preparation입니다. 요구사항 체크리스트 표에 분류, 명칭, 단서, 근거 페이지 열이 있습니다. 오른쪽 화면 머리의 공고 이름과 번호, 요구사항 ID, 일부 명칭·단서·파일 이름은 회색 막대로 가렸습니다."></div>
+<figcaption>14쪽 · 03 응찰 준비. 요구사항 체크리스트 화면입니다. 요구사항마다 근거 페이지가 붙고, 단서가 있으면 ※로 따로 적습니다.</figcaption>
+</figure>
+<figure class="shot half">
+<div class="img r169"><img src="assets/bw-solar-deck-p15.png" width="1344" height="756" loading="lazy" alt="발표 자료 15쪽 03 Bid Preparation입니다. 왼쪽은 WBS 표와 임계경로, M/M 예상 원가 카드이고 오른쪽은 제출 서류 표와 보완요청, 금지 표현 검사입니다. 공고 이름과 번호, 요구사항 ID, 일부 서류·파일 이름과 문구는 회색 막대로 가렸습니다."></div>
+<figcaption>15쪽 · 03 응찰 준비. WBS와 임계경로, 제출 준비 화면입니다. 원가는 M/M까지만 내고 「투찰가 아님」이라고 적었습니다.</figcaption>
+</figure>
+<div class="memo half">
 <p class="desc">JunctionX Korea 2026 발표 자료 25장 가운데 화면 시안이 든 12 · 14 · 15쪽입니다. 슬라이드와 화면 디자인은 팀 디자이너가 했습니다. 화면에 들어간 판정 규칙은 제가 쓴 기획 문서에서 왔습니다.</p>
 <p class="desc">화면은 디자인 시안이고, 실행 화면은 싣지 않았습니다. 가상 회사 이름과 데모 공고 한 건의 이름·번호, 요구사항 ID, 일부 서류 이름 같은 글자는 회색 막대로 가리거나 지웠습니다.</p>
 <p class="desc">14·15쪽의 영어 설명은 발표 자료 문구 그대로입니다. WBS와 제출 점검표는 Studio가 아니라 백엔드가 부르는 Solar가 만들었습니다.</p>
@@ -646,14 +657,6 @@ p.f-note { line-height: 1.5; }
 <div><span class="label r t3">Masked</span><span class="small">가상 회사명 · 공고명과 번호 · 요구사항 ID 등</span></div>
 </div>
 </div>
-<figure class="shot half">
-<div class="img r169"><img src="assets/bw-solar-deck-p14.png" width="1344" height="756" loading="lazy" alt="발표 자료 14쪽 03 Bid Preparation입니다. 요구사항 체크리스트 표에 분류, 명칭, 단서, 근거 페이지 열이 있습니다. 오른쪽 화면 머리의 공고 이름과 번호, 요구사항 ID, 일부 명칭·단서·파일 이름은 회색 막대로 가렸습니다."></div>
-<figcaption>14쪽 · 03 응찰 준비. 요구사항 체크리스트 화면입니다. 요구사항마다 근거 페이지가 붙고, 단서가 있으면 ※로 따로 적습니다.</figcaption>
-</figure>
-<figure class="shot half">
-<div class="img r169"><img src="assets/bw-solar-deck-p15.png" width="1344" height="756" loading="lazy" alt="발표 자료 15쪽 03 Bid Preparation입니다. 왼쪽은 WBS 표와 임계경로, M/M 예상 원가 카드이고 오른쪽은 제출 서류 표와 보완요청, 금지 표현 검사입니다. 공고 이름과 번호, 요구사항 ID, 일부 서류·파일 이름과 문구는 회색 막대로 가렸습니다."></div>
-<figcaption>15쪽 · 03 응찰 준비. WBS와 임계경로, 제출 준비 화면입니다. 원가는 M/M까지만 내고 「투찰가 아님」이라고 적었습니다.</figcaption>
-</figure>
 </div>
 <div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
 </section>
