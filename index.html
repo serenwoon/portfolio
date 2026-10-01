@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정운 — Portfolio</title>
+<meta name="description" content="문서를 다루는 일을 에이전트로 돌리고 그 결과가 정말 맞는지 재는 하네스를 만듭니다. 정운의 포트폴리오입니다.">
+<meta property="og:title" content="정운 — Portfolio">
+<meta property="og:description" content="문서를 다루는 일을 에이전트로 돌리고 그 결과가 정말 맞는지 재는 하네스를 만듭니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://serenwoon.github.io/portfolio/">
+<meta property="og:image" content="https://serenwoon.github.io/portfolio/assets/bw-intro-sheet-21x8.png">
+<meta name="theme-color" content="#0E0E0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23161616'/%3E%3Cpath d='M10 32H54M54 32C47 31 42 26 40 20M54 32C47 33 42 38 40 44' fill='none' stroke='%23EDEDED' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 흑백 포트폴리오 — 색은 R = G = B 뿐이다. 위계는 크기·굵기·명도·여백으로만 만든다. */
+:root {
+  --ink-950: #0E0E0E; --ink-900: #161616; --ink-800: #1F1F1F; --ink-700: #2E2E2E;
+  --gray-600: #5C5C5C; --gray-500: #6B6B6B; --gray-400: #8A8A8A; --gray-300: #A3A3A3;
+  --paper-200: #D6D6D6; --paper-100: #EDEDED; --paper-50: #F4F4F4; --white: #FFFFFF;
+
+  --bg: var(--ink-900); --bg-deep: var(--ink-950); --surface: var(--ink-800); --line: var(--ink-700);
+  --text: var(--paper-100); --text-2: var(--gray-300); --text-3: var(--gray-400); --text-mute: var(--gray-500);
+
+  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Helvetica Neue", Arial, sans-serif;
+  --fs-xl: clamp(72px, 20vw, 320px);
+  --fs-lg: clamp(44px, 9vw, 136px);
+  --fs-heading: clamp(28px, 3vw, 44px);
+  --fs-numeral: clamp(24px, 2.2vw, 32px);
+  --fs-title: clamp(17px, 1.4vw, 20px);
+  --fs-body: 15px; --fs-small: 13px; --fs-label: 12px;
+
+  --margin: clamp(20px, 4.6vw, 80px);
+  --gutter: clamp(12px, 1.6vw, 24px);
+  --pad: clamp(48px, 6.5vw, 112px);
+  --cols: 12;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+@media (max-width: 1199px) { :root { --cols: 8; } }
+@media (max-width: 767px) { :root { --cols: 4; --fs-body: 14px; --fs-label: 11px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--ink-950); }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: var(--fs-body); line-height: 1.5;
+  word-break: keep-all; overflow-wrap: anywhere; -webkit-font-smoothing: antialiased;
+}
+:where(h1, h2, h3, p) { margin: 0; }
+a { color: inherit; text-decoration: none; }
+p { line-height: 1.65; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 1px solid var(--text); outline-offset: 4px; }
+
+/* 스프레드 — 한 화면을 한 장으로 본다. 스프레드 사이는 명도 차이로 나눈다 */
+.spread {
+  display: flex; flex-direction: column;
+  padding: var(--pad) max(var(--margin), calc((100% - 1440px) / 2));
+  background: var(--bg); color: var(--text);
+}
+.paper {
+  --bg: var(--paper-50); --bg-deep: var(--white); --surface: var(--white); --line: var(--paper-200);
+  --text: var(--ink-950); --text-2: var(--gray-600); --text-3: var(--gray-600); --text-mute: var(--gray-400);
+}
+.deep { background: var(--bg-deep); }
+.alt { background: var(--surface); }
+
+/* 글자 */
+.label { font-size: var(--fs-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.2; white-space: nowrap; }
+.label.r { font-weight: 400; }
+.num { font-variant-numeric: tabular-nums; }
+.numeral { font-size: var(--fs-numeral); font-weight: 400; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.small { font-size: var(--fs-small); line-height: 1.45; }
+.xl { font-size: var(--fs-xl); font-weight: 300; line-height: 0.9; letter-spacing: -0.045em; overflow-wrap: normal; }
+.lg { font-size: var(--fs-lg); font-weight: 600; line-height: 0.92; letter-spacing: -0.05em; overflow-wrap: normal; }
+.heading { font-size: var(--fs-heading); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; }
+.title { font-size: var(--fs-title); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; }
+p.title { line-height: 1.4; }
+.t3 { color: var(--text-3); }
+
+/* 뼈대 */
+.grid { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); column-gap: var(--gutter); }
+.bar { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.date { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; text-align: right; }
+.date .label { font-weight: 400; }
+.foot { margin-top: auto; padding-top: 64px; }
+.th { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 16px; row-gap: 8px; }
+.th .ko { padding-bottom: calc(var(--fs-lg) * 0.07); }
+.content { margin-top: 48px; }
+
+/* 이미지 — 모서리 0, 테두리·그림자 없음, 흑백 */
+.img { background: var(--line); display: flex; overflow: hidden; }
+.img img { width: 100%; height: 100%; object-fit: cover; }
+.r218 { aspect-ratio: 21 / 8; }
+.r169 { aspect-ratio: 16 / 9; }
+.r43 { aspect-ratio: 4 / 3; }
+.r11 { aspect-ratio: 1 / 1; }
+.arrow { flex: none; height: auto; stroke: currentColor; }
+
+/* 01 표지 */
+.cover { min-height: 100vh; min-height: 100svh; }
+.hero { display: flex; align-items: center; gap: 0.12em; font-size: var(--fs-xl); }
+.hero .arrow { width: 1.05em; }
+.meta { margin-top: 32px; row-gap: 24px; }
+.meta .who { grid-column: 4 / 7; }
+.meta .what { grid-column: 7 / 10; }
+.meta .contacts { grid-column: 10 / 13; display: flex; flex-direction: column; gap: 12px; }
+.contacts a, .ct .cl a, .ct .lv a { color: var(--text-2); }
+.contacts a:hover, .ct .cl a:hover, .ct .lv a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.cfoot { margin-top: auto; padding-top: 64px; display: flex; flex-direction: column; gap: 4px; }
+.cfoot .label { font-weight: 400; }
+
+/* 02 소개 */
+.intro .pic { grid-column: 1 / 9; }
+.intro .side { grid-column: 9 / 13; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+.paras { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 16px; color: var(--text-2); font-size: var(--fs-small); }
+.paras p:first-child { grid-column: 2 / 5; }
+.paras p:last-child { grid-column: 1 / 5; }
+
+/* 03 대표작 */
+.feat .pic { grid-column: 1 / 9; }
+.feat .side { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 16px; }
+.feat .desc { color: var(--text-2); font-size: var(--fs-small); }
+.kv { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.kv > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.rel { margin-top: 64px; row-gap: 32px; }
+.rel .rhead { grid-column: 1 / -1; }
+.rel .entry { grid-column: span 4; }
+
+/* 목록 항목 */
+.entries { margin-top: 32px; row-gap: 48px; }
+.entry { grid-column: span 6; }
+.entry .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.entry .row .small { flex: none; }
+.entry p { margin-top: 8px; color: var(--text-2); font-size: var(--fs-small); max-width: 500px; }
+a.entry:hover .title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.ltop { margin-top: 24px; align-items: end; }
+.ltop .th { margin-top: 0; grid-column: 1 / 7; }
+.ltop .pics { grid-column: 7 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.pics .cap { grid-column: 1 / -1; margin-top: 8px; font-size: var(--fs-small); line-height: 1.45; color: var(--text-3); }
+
+/* 작업 카드 */
+.cards { row-gap: 64px; }
+.card { grid-column: span 6; display: flex; flex-direction: column; }
+.card .row { margin-top: 16px; display: flex; align-items: baseline; gap: 16px; }
+.card .row .title { flex: 1; }
+.card .cat { margin-top: 8px; }
+.card .desc { margin-top: 12px; color: var(--text-2); font-size: var(--fs-small); max-width: 470px; }
+.card .who { margin-top: 12px; color: var(--text-3); }
+.card:hover .title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* 그 밖의 작업 */
+.more { margin-top: 64px; }
+.more .rhead { margin-bottom: 24px; }
+.irow { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); column-gap: var(--gutter); align-items: baseline; }
+.irow + .irow { margin-top: 20px; }
+.irow .title { grid-column: 1 / 4; }
+.irow p { grid-column: 4 / 11; color: var(--text-2); font-size: var(--fs-small); }
+.irow .tag { grid-column: 11 / 13; justify-self: end; color: var(--text-3); }
+a.irow:hover .title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* 08 연락처 */
+.ct .about { grid-column: 1 / 7; display: flex; flex-direction: column; gap: 16px; }
+.ct .about p { color: var(--text-2); font-size: var(--fs-small); max-width: 420px; }
+.ct .cl { grid-column: 7 / 10; display: flex; flex-direction: column; gap: 12px; }
+.ct .lv { grid-column: 10 / 13; display: flex; flex-direction: column; gap: 12px; }
+.actions { margin-top: 64px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; }
+
+/* 버튼 · 텍스트 링크 */
+.btn { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 14px 20px; border: 1px solid var(--text); color: var(--text); transition: background 150ms ease-out, color 150ms ease-out; }
+.btn:hover { background: var(--text); color: var(--bg); }
+.btn .arrow { width: 1.6em; }
+.link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.link .arrow { width: 1.4em; transition: transform 150ms ease-out; }
+.link:hover .arrow { transform: translateX(4px); }
+.link:hover .t { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* 결과 그림 — 저장소 README 의 실측값으로 그렸다 */
+.fig { background: var(--line); color: var(--text); display: flex; flex-direction: column; gap: 16px; padding: 28px 32px; overflow: hidden; }
+.r11.fig { padding: 20px 22px; gap: 12px; }
+.f-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: var(--text-2); }
+.f-note { font-size: var(--fs-label); color: var(--text-2); }
+p.f-note { line-height: 1.5; }
+.f-bars { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.f-row { display: grid; grid-template-columns: 30% minmax(0, 1fr) 2.5em; align-items: center; column-gap: 12px; }
+.f-lab { font-size: var(--fs-small); color: var(--text-2); white-space: nowrap; }
+.f-val { font-size: var(--fs-small); color: var(--text-2); text-align: right; font-variant-numeric: tabular-nums; }
+.f-track { position: relative; display: block; height: 12px; background: var(--ink-800); }
+.f-track i { position: absolute; left: 0; top: 0; bottom: 0; display: block; background: var(--gray-400); }
+.f-row.f-hi .f-lab, .f-row.f-hi .f-val { color: var(--text); }
+.f-row.f-hi .f-track i { background: var(--paper-100); }
+.f-cols { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 16px; }
+.f-col { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.f-col .f-val { text-align: left; }
+.f-col .f-track { flex: 1; height: auto; }
+.f-col .f-track i { top: auto; right: 0; }
+.f-col .f-lab { font-size: var(--fs-label); }
+.f-col.f-hi .f-lab, .f-col.f-hi .f-val { color: var(--text); }
+.f-col.f-hi .f-track i { background: var(--paper-100); }
+.f-dots { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.f-drow { display: grid; grid-template-columns: 28% minmax(0, 1fr) 3em; align-items: center; column-gap: 12px; height: 38px; }
+.f-drow.f-axis { height: 20px; }
+.f-plot { position: relative; display: block; height: 100%; }
+.f-band { position: absolute; top: 0; bottom: 0; display: block; background: var(--ink-800); }
+.f-ci { position: absolute; top: 50%; height: 2px; margin-top: -1px; display: block; background: var(--gray-400); }
+.f-dot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; display: block; background: var(--gray-400); }
+.f-drow.f-hi .f-ci, .f-drow.f-hi .f-dot { background: var(--paper-100); }
+.f-drow.f-hi .f-lab, .f-drow.f-hi .f-val { color: var(--text); }
+.f-ticks { position: relative; display: block; height: 16px; }
+.f-ticks span { position: absolute; top: 0; transform: translateX(-50%); font-size: var(--fs-label); color: var(--text-2); font-variant-numeric: tabular-nums; }
+.f-loop { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.f-lrow { display: grid; grid-template-columns: 38% minmax(0, 1fr) 38%; align-items: center; }
+.f-box { display: block; background: var(--ink-800); padding: 20px 12px; text-align: center; font-size: var(--fs-title); line-height: 1.25; }
+.f-box.f-on { background: var(--paper-100); color: var(--ink-950); }
+.f-arr { display: flex; justify-content: center; color: var(--gray-400); }
+.f-arr .arrow { width: 56%; }
+.f-back { position: relative; height: 40px; margin: 0 19%; border-right: 1px solid var(--gray-400); border-bottom: 1px solid var(--gray-400); }
+.f-up { position: absolute; left: -6px; top: 0; width: 12px; height: 100%; color: var(--gray-400); }
+.f-lbl { margin-top: 10px; text-align: center; font-size: var(--fs-small); color: var(--text-2); }
+.f-rcpt { flex: 1; display: flex; flex-direction: column; justify-content: center; font-size: var(--fs-small); }
+.f-rr { display: grid; grid-template-columns: 20% 12% 12% minmax(0, 1fr); column-gap: 12px; padding: 10px 0; align-items: baseline; color: var(--text-2); }
+.f-rr > span:nth-child(2), .f-rr > span:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; }
+.f-rr.f-rh { font-size: var(--fs-label); border-bottom: 1px solid var(--gray-500); }
+.f-rr > span:first-child, .f-rr > span:nth-child(3) { color: var(--text); }
+.f-steps { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.f-steps.f-stat { gap: 12px; }
+.f-step { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; background: var(--ink-800); padding: 10px 12px; font-size: var(--fs-small); line-height: 1.35; }
+.f-step b { font-weight: 400; }
+.f-step small { flex: none; font-size: var(--fs-label); color: var(--text-2); }
+.f-step.f-on { background: var(--paper-100); color: var(--ink-950); }
+.f-step.f-on small { color: var(--gray-600); }
+.f-down { display: flex; justify-content: center; height: 18px; color: var(--gray-400); }
+.f-down svg { width: 8px; height: 100%; }
+.f-hero { font-size: var(--fs-heading); font-weight: 600; line-height: 1; letter-spacing: -0.025em; }
+.f-stat .f-lab { white-space: normal; }
+
+/* 태블릿 8칸 */
+@media (max-width: 1199px) {
+  .meta .who { grid-column: 1 / 4; }
+  .meta .what { grid-column: 4 / 6; }
+  .meta .contacts { grid-column: 6 / 9; }
+  .intro .pic { grid-column: 1 / 6; }
+  .intro .side { grid-column: 6 / 9; }
+  .feat .pic, .feat .side { grid-column: 1 / -1; }
+  .feat .side { margin-top: 24px; }
+  .ltop .th, .ltop .pics { grid-column: 1 / -1; }
+  .ltop .pics { margin-top: 32px; }
+  .entry, .card { grid-column: span 4; }
+  .irow .title { grid-column: 1 / 4; }
+  .irow p { grid-column: 4 / 8; }
+  .irow .tag { grid-column: 8 / 9; }
+  .ct .about { grid-column: 1 / 5; }
+  .ct .cl { grid-column: 5 / 7; }
+  .ct .lv { grid-column: 7 / 9; }
+}
+
+/* 모바일 4칸 */
+@media (max-width: 767px) {
+  .cover { min-height: auto; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .hero .arrow { width: 40vw; }
+  .meta .who, .meta .what, .meta .contacts { grid-column: 1 / -1; }
+  .intro .pic { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .intro .side { grid-column: 1 / -1; margin-top: 32px; justify-content: flex-start; }
+  .paras p:first-child, .paras p:last-child { grid-column: 1 / -1; }
+  .rel { margin-top: 48px; }
+  .rel .entry, .entry, .card { grid-column: 1 / -1; }
+  .entry .row { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .ltop .pics { grid-template-columns: 1fr; }
+  .cards { row-gap: 48px; }
+  .irow { row-gap: 4px; }
+  .irow .title { grid-column: 1 / 4; }
+  .irow .tag { grid-column: 4 / 5; }
+  .irow p { grid-column: 1 / -1; grid-row: 2; }
+  .ct { row-gap: 32px; }
+  .ct .about, .ct .cl, .ct .lv { grid-column: 1 / -1; }
+  .actions { margin-top: 48px; }
+  .fig { padding: 16px; gap: 10px; }
+  .r11.fig { padding: 20px; gap: 14px; }
+  .f-bars { gap: 8px; }
+  .f-lab, .f-val { font-size: 11px; }
+  .f-cols { column-gap: 10px; }
+  .f-drow { height: 26px; }
+  .f-box { padding: 12px 8px; }
+  .f-back { height: 28px; }
+  .f-rr { padding: 6px 0; column-gap: 8px; font-size: 11px; }
+}
+
+/* 등장 — 스프레드마다 한 번, 요소 사이 60ms */
+.js .spread > * { opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
+.js .spread.in > * { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .spread > * { opacity: 1; transform: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<section class="spread cover deep" aria-label="표지">
+<div class="hero">
+<svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg>
+<h1 class="xl">Portfolio</h1>
+</div>
+<div class="grid meta">
+<div class="who label">정운 JeongWoon</div>
+<div class="what label r">Document AI · Harness</div>
+<div class="contacts">
+<span class="label r">My Contacts</span>
+<a class="small" href="https://github.com/serenwoon">github.com/serenwoon</a>
+<a class="small" href="mailto:wjddns5161@gmail.com">wjddns5161@gmail.com</a>
+</div>
+</div>
+<div class="cfoot"><span class="label num">01 Oct</span><span class="numeral">2026</span></div>
+</section>
+
+<section class="spread" aria-labelledby="h-intro">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-intro">Introduction</h2><span class="label r t3 ko">소개</span></div>
+<div class="grid content intro">
+<div class="img r218 pic"><img src="assets/bw-intro-sheet-21x8.png" width="2100" height="800" alt="라이브 결과 화면 네 장을 흑백으로 나란히 놓았습니다. 왼쪽부터 quote-review, g2b-daily 대시보드, 다시 한 걸음의 응답, star-voyage 차트 휠입니다."></div>
+<div class="side">
+<h3 class="heading">정운</h3>
+<div class="paras">
+<p>문서를 다루는 일을 에이전트로 돌리고 그 결과가 정말 맞는지 재는 하네스를 만듭니다.</p>
+<p>결과를 내기 전에 맞고 틀림을 가릴 방법부터 마련합니다. 코드는 주로 Claude Code가 쓰고 저는 무엇을 잴지 정한 다음 나온 결과를 다시 셉니다.</p>
+</div>
+</div>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread paper" aria-labelledby="h-featured">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-featured">Featured</h2><span class="label r t3 ko">대표작</span></div>
+<div class="grid content feat">
+<a class="img r169 pic" href="https://serenwoon.github.io/quote-review/"><img src="assets/bw-quote-review-16x9.png" width="1400" height="788" loading="lazy" alt="quote-review 화면입니다. 위에 인용 793칸의 자리 분포와 대조 격자, 사람 판정 수가 있고, 아래에 문서 20건 목록과 인용 표가 있습니다."></a>
+<div class="side">
+<span class="numeral">01</span>
+<h3 class="heading">quote-review</h3>
+<p class="desc">이 화면에서는 인용 793칸이 원본 PDF에 실제로 있는지 사람이 한 칸씩 확인합니다. 인용은 문서 AI가 공공기관 채용공고에서 뽑았습니다. 대조 격자 여덟 칸과 그 줄의 자리를 나란히 놓고 칸마다 원문에 있는지, 없는지, 판단할 수 없는지 가운데 하나를 고릅니다.</p>
+<p class="title">무작위 스무 칸 중 넷이 격자와 어긋났는데 그중 둘은 격자가 잡을 수 없는 종류였습니다.</p>
+<p class="small t3">스무 칸은 표본일 뿐이고 793칸의 사람 판정은 아직 0입니다.</p>
+<div class="kv">
+<div><span class="label r t3">Year</span><span class="small num">2026.09</span></div>
+<div><span class="label r t3">Stack</span><span class="small">Next.js 16 · GitHub Pages</span></div>
+<div><span class="label r t3">Role</span><span class="small">설계·측정 정운 · 구현 Claude Code</span></div>
+</div>
+<a class="link small" href="https://serenwoon.github.io/quote-review/"><span class="t">serenwoon.github.io/quote-review</span><svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg></a>
+</div>
+</div>
+<div class="grid rel">
+<div class="rhead label r t3">같은 코퍼스에서 먼저 잰 것</div>
+<a class="entry" href="https://github.com/serenwoon/hiring-traps">
+<div class="row"><span class="title">hiring-traps</span><span class="small num t3">(2026)</span></div>
+<p>공공기관 채용공고 20건으로 Upstage Studio를 시험해 봤습니다. 제 에이전트 19개는 노드 14종 가운데 4종을 썼습니다. 같은 문서를 두 번 넣었더니 값이 달라졌습니다.</p>
+</a>
+<a class="entry" href="https://github.com/serenwoon/pdf-read-order">
+<div class="row"><span class="title">pdf-read-order</span><span class="small num t3">(2026)</span></div>
+<p>같은 PDF를 읽기 순서만 바꿔 읽었습니다. 채용공고 104건 중 94건(90.4%)에서 글자는 같은데 순서만 달라졌습니다. 처음엔 121건으로 발표했지만 사본 17건이 섞여 있어 바로잡았습니다.</p>
+</a>
+<a class="entry" href="https://github.com/serenwoon/pdf-space-guess">
+<div class="row"><span class="title">pdf-space-guess</span><span class="small num t3">(2026)</span></div>
+<p>PDF에서 0.25em 이상 벌어진 자리에 공백이 안 들어가는 비율은 Type 3 글꼴이 79.0%, Type 0이 1.5%입니다. 재는 단위를 잘못 잡아 나온 99.9%를 첫 발표 뒤에 고쳤습니다.</p>
+</a>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread" aria-labelledby="h-harnesses">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-harnesses">Harnesses</h2><span class="label r t3 ko">검증 하네스</span></div>
+<div class="grid content cards">
+<a class="card" href="https://github.com/serenwoon/ledger-reconcile">
+<div class="fig r43" role="img" aria-label="대조를 어디까지 돌리느냐에 따라 잡는 결함 수입니다. 11종 중 건수만 2종, 금액 합계까지 4종, 건별 대조까지 8종, 재계산까지 11종입니다.">
+<div class="f-head"><span class="label r">어디까지 돌리나 · 잡는 결함</span><span class="label r">11종 중</span></div>
+<div class="f-bars">
+<div class="f-row"><span class="f-lab">건수만</span><span class="f-track"><i style="width: 18.18%"></i></span><span class="f-val">2</span></div>
+<div class="f-row f-hi"><span class="f-lab">+ 금액 합계</span><span class="f-track"><i style="width: 36.36%"></i></span><span class="f-val">4</span></div>
+<div class="f-row"><span class="f-lab">+ 건별 대조</span><span class="f-track"><i style="width: 72.73%"></i></span><span class="f-val">8</span></div>
+<div class="f-row"><span class="f-lab">+ 재계산</span><span class="f-track"><i style="width: 100%"></i></span><span class="f-val">11</span></div>
+</div>
+<p class="f-note">집계 대조(건수 + 금액 합계) 단계까지만 보면 일곱 종이 잡히지 않습니다.</p>
+</div>
+<div class="row"><span class="label r t3 num">02</span><span class="title">ledger-reconcile</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Migration · Verification</span>
+<p class="desc">결함 열한 종을 심은 합성 원장으로 이행 검증을 네 겹으로 나눠 쟀습니다. 건수와 금액 합계만 맞춰 보고 끝내면 열한 종 중 일곱 종이 그대로 빠져나갑니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/wikilink-audit">
+<div class="fig r43" role="img" aria-label="같은 봉인 라벨로 잰 정밀도입니다. 첫 실측 0.190, 분모 정의를 바꾼 뒤 0.469, 해석기를 고친 뒤 1.000, 라벨 오류를 정정한 값 0.980입니다.">
+<div class="f-head"><span class="label r">정밀도 · 같은 봉인 라벨</span><span class="label r">0 – 1</span></div>
+<div class="f-cols">
+<div class="f-col"><span class="f-val">0.190</span><span class="f-track"><i style="height: 19%"></i></span><span class="f-lab">첫 실측</span></div>
+<div class="f-col"><span class="f-val">0.469</span><span class="f-track"><i style="height: 46.9%"></i></span><span class="f-lab">분모 수정</span></div>
+<div class="f-col"><span class="f-val">1.000</span><span class="f-track"><i style="height: 100%"></i></span><span class="f-lab">해석기 수리</span></div>
+<div class="f-col f-hi"><span class="f-val">0.980</span><span class="f-track"><i style="height: 98%"></i></span><span class="f-lab">라벨 정정</span></div>
+</div>
+<p class="f-note">1.000은 라벨이 도구의 오탐 둘을 덮은 값이었습니다. 그 둘을 틀린 것으로 세면 97/99 = 0.980입니다.</p>
+</div>
+<div class="row"><span class="label r t3 num">03</span><span class="title">wikilink-audit</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Knowledge Base · Audit</span>
+<p class="desc">옵시디언 위키링크가 실제로 어디로 가는지 따져서 안 가는 것만 사유를 붙여 보고합니다. 발표한 정밀도 1.00은 도구의 오탐 둘이 라벨에 묻힌 숫자여서 0.980으로 정정했습니다. 재현율은 재지 않았습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/extraction-benchmark">
+<div class="img r43"><img src="assets/bw-extraction-benchmark-4x3.png" width="1180" height="885" loading="lazy" alt="측정 대시보드입니다. 대상 항목 176건, 건당 소요 사람 60초와 파이프라인 8.6초, 분류 일치 7~8/10, 실행별 일치율 막대가 보입니다."></div>
+<div class="row"><span class="label r t3 num">04</span><span class="title">extraction-benchmark</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Document AI · Benchmark</span>
+<p class="desc">도로교통법 조문 10건을 사람과 파이프라인이 따로 분류하고 요약했습니다. 본문을 한정하는 단서 4건 중 요약에 살린 것은 사람 0건, LLM 0~1건이었습니다. 기계 스캔을 붙이자 4건이 모두 잡혔습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/youtube-sentiment-pipeline">
+<div class="fig r43" role="img" aria-label="골든셋 198건에서 잰 macro F1과 95% 구간입니다. 무작위 추측 0.329(0.265–0.395), 다수 클래스 0.195(0.170–0.218), 어휘 규칙 0.285(0.227–0.342), TF-IDF+LR 0.334(0.269–0.400), SBERT+LR 0.376(0.307–0.443)이고, 어떤 방법도 무작위 구간을 넘어서지 못했습니다.">
+<div class="f-head"><span class="label r">macro F1 · 95% 구간</span><span class="label r">골든셋 198건</span></div>
+<div class="f-dots">
+<div class="f-drow"><span class="f-lab">무작위 추측</span><span class="f-plot"><b class="f-band" style="left: 38.33%; width: 43.33%"></b><b class="f-ci" style="left: 38.33%; width: 43.33%"></b><b class="f-dot" style="left: 59.67%"></b></span><span class="f-val">0.329</span></div>
+<div class="f-drow"><span class="f-lab">다수 클래스</span><span class="f-plot"><b class="f-band" style="left: 38.33%; width: 43.33%"></b><b class="f-ci" style="left: 6.67%; width: 16%"></b><b class="f-dot" style="left: 15%"></b></span><span class="f-val">0.195</span></div>
+<div class="f-drow"><span class="f-lab">어휘 규칙</span><span class="f-plot"><b class="f-band" style="left: 38.33%; width: 43.33%"></b><b class="f-ci" style="left: 25.67%; width: 38.33%"></b><b class="f-dot" style="left: 45%"></b></span><span class="f-val">0.285</span></div>
+<div class="f-drow"><span class="f-lab">TF-IDF + LR</span><span class="f-plot"><b class="f-band" style="left: 38.33%; width: 43.33%"></b><b class="f-ci" style="left: 39.67%; width: 43.67%"></b><b class="f-dot" style="left: 61.33%"></b></span><span class="f-val">0.334</span></div>
+<div class="f-drow f-hi"><span class="f-lab">SBERT + LR</span><span class="f-plot"><b class="f-band" style="left: 38.33%; width: 43.33%"></b><b class="f-ci" style="left: 52.33%; width: 45.33%"></b><b class="f-dot" style="left: 75.33%"></b></span><span class="f-val">0.376</span></div>
+<div class="f-drow f-axis"><span></span><span class="f-ticks"><span style="left: 16.67%">0.2</span><span style="left: 50%">0.3</span><span style="left: 83.33%">0.4</span></span><span></span></div>
+</div>
+<p class="f-note">짙은 띠가 무작위 추측의 95% 구간입니다. 어떤 방법도 이 띠를 넘지 못했습니다.</p>
+</div>
+<div class="row"><span class="label r t3 num">05</span><span class="title">youtube-sentiment-pipeline</span><span class="small num">2026</span></div>
+<span class="cat label r t3">ML · Evaluation</span>
+<p class="desc">자동차 리뷰 댓글의 감정을 가르는 분류기를 골든셋 198건과 부트스트랩 95% 구간으로 평가했습니다. 가장 나은 SBERT도 macro F1이 0.376으로 무작위 추측(0.329)과 구분되지 않습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread alt" aria-labelledby="h-shipped">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-shipped">Shipped</h2><span class="label r t3 ko">배포와 도구</span></div>
+<div class="grid content cards">
+<a class="card" href="https://github.com/serenwoon/g2b-daily">
+<div class="img r43"><img src="assets/bw-g2b-daily-4x3.png" width="1240" height="930" loading="lazy" alt="g2b-daily 공개 대시보드입니다. 2026-09-28 스냅샷 691건, 등록공고 547·변경공고 31·취소공고 35·재공고 78, 날짜별 스냅샷 규모 막대가 보입니다."></div>
+<div class="row"><span class="label r t3 num">06</span><span class="title">g2b-daily</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Public Data · Live</span>
+<p class="desc">나라장터 용역 입찰공고 메타데이터를 매일 05:00(KST)에 예약 수집합니다. 수집이 불완전하면 파일을 만들지 않고 실패합니다. 2026.08.31–09.28, 29일 중 25일을 저장했습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/star-voyage">
+<div class="img r43"><img src="assets/bw-star-voyage-4x3.png" width="1180" height="885" loading="lazy" alt="star-voyage 첫 화면입니다. 왼쪽에 이름·생년월일·태어난 시각·출생 도시 입력 칸, 오른쪽에 2000년 1월 1일 정오 서울의 예시 차트 휠과 해설 칸이 있습니다."></div>
+<div class="row"><span class="label r t3 num">07</span><span class="title">star-voyage</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Web · Live</span>
+<p class="desc">점성술 공부 사이트입니다. 출생 차트 휠을 지도처럼 끌고 확대하며 해설을 읽을 수 있습니다. 행성 위치를 Swiss Ephemeris 기준값과 대조해 최대 차이 0.004°를 README에 적었습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/agent-workflow">
+<div class="fig r43" role="img" aria-label="판정 루프입니다. 산출물을 수정하면 판정자가 검사하고, 불일치·근거 없음·반론이 나오면 다시 산출물 수정으로 돌아갑니다.">
+<div class="f-head"><span class="label r">판정 루프</span><span class="label r">README 0절</span></div>
+<div class="f-loop">
+<div class="f-lrow"><span class="f-box">산출물 수정</span><span class="f-arr"><svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg></span><span class="f-box f-on">판정자가 검사</span></div>
+<div class="f-back"><svg class="f-up" viewBox="0 0 48 160" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M24 158 V2"/><path d="M24 2 C22 18 12 30 2 34"/><path d="M24 2 C26 18 36 30 46 34"/></svg></div>
+<span class="f-lbl">불일치 · 근거 없음 · 반론</span>
+</div>
+<p class="f-note">문서 작업에는 코드처럼 빨간 줄을 띄워 줄 판정자가 없어서 하나 만들어 넣었습니다.</p>
+</div>
+<div class="row"><span class="label r t3 num">08</span><span class="title">agent-workflow</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Agent Workflow</span>
+<p class="desc">장문 문서 작업을 에이전트에 맡길 때 틀린 결과가 조용히 넘어가지 않게 판정 루프를 짰습니다. 여기 규칙은 미리 설계해 둔 것 하나 없이 전부 무언가를 틀린 다음에 생겼습니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+<a class="card" href="https://github.com/serenwoon/edit-receipt">
+<div class="fig r43" role="img" aria-label="edit-receipt 드라이런 영수증입니다. 문서 A는 시킴 1 바뀜 0으로 못 찾았고, 문서 B와 C는 시킴 1 바뀜 0으로 이미 적용된 것 같다고 나왔고, 문서 D는 시킴 1 바뀜 3으로 한 건을 기대했다고 나왔습니다.">
+<div class="f-head"><span class="label r">영수증 · --dry-run</span><span class="label r">README 실행 예</span></div>
+<div class="f-rcpt">
+<div class="f-rr f-rh"><span>파일</span><span>시킴</span><span>바뀜</span><span>판정</span></div>
+<div class="f-rr"><span>문서 A</span><span>1</span><span>0</span><span>0건 — 못 찾았다</span></div>
+<div class="f-rr"><span>문서 B</span><span>1</span><span>0</span><span>0건 — 이미 적용된 것 같다</span></div>
+<div class="f-rr"><span>문서 C</span><span>1</span><span>0</span><span>0건 — 이미 적용된 것 같다</span></div>
+<div class="f-rr"><span>문서 D</span><span>1</span><span>3</span><span>3건 — 1건을 기대했다</span></div>
+</div>
+<p class="f-note">이미 끝낸 편집 넷을 다시 돌리자 결과가 0건으로 모이지 않고 세 종류로 나뉘었습니다. 파일 이름은 가렸습니다.</p>
+</div>
+<div class="row"><span class="label r t3 num">09</span><span class="title">edit-receipt</span><span class="small num">2026</span></div>
+<span class="cat label r t3">Dev Tool · Edit</span>
+<p class="desc">일괄 텍스트 편집에 영수증을 붙입니다. 시킨 건수와 바뀐 건수가 다르면 아무 파일도 쓰지 않습니다. 기대 건수의 기본값은 「1 이상」이 아니라 정확히 1입니다.</p>
+<span class="who label r">설계·측정 정운 · 구현 Claude Code</span>
+</a>
+</div>
+<div class="more">
+<div class="rhead label r t3">그 밖의 작업</div>
+<a class="irow" href="https://github.com/serenwoon/spaced-quiz"><span class="title">spaced-quiz</span><p>마크다운 노트의 문항을 터미널에서 간격 반복으로 풉니다. 진도를 노트 옆 마크다운 표에 써서 기기 사이에 따라가게 합니다.</p><span class="tag label r">Public</span></a>
+<a class="irow" href="https://star-cards-tau.vercel.app"><span class="title">star-cards</span><p>생년월일로 9:16 별자리 카드 여섯 장을 만들어 저장·공유하는 정적 사이트입니다. star-voyage의 계산 엔진을 그대로 씁니다.</p><span class="tag label r">Live</span></a>
+<div class="irow"><span class="title">stage-gate</span><p>이 파이프라인은 아이디어 한 줄을 기획·판단·설계·구현·검증·배포로 끌고 갑니다. 단계마다 사람 게이트가 섭니다.</p><span class="tag label r">Private</span></div>
+<div class="irow"><span class="title">wbs-weekly</span><p>엑셀 WBS 진척관리를 웹으로 옮겼습니다. 주차 스냅샷을 쌓아 지난주 대비 변화를 먼저 보여 줍니다.</p><span class="tag label r">Private</span></div>
+<div class="irow"><span class="title">pms</span><p>폐쇄망 운영을 위한 프로젝트 관리 시스템입니다. 계정·권한, 대시보드, 채팅·게시판, CSV·XLSX WBS 분석을 담았습니다.</p><span class="tag label r">Private</span></div>
+<div class="irow"><span class="title">policy · one-step-apply</span><p>MABC 결선작 「다시, 한 걸음」과 그 고도화 판입니다. 청년정책 탐색과 필요서류·신청 준비를 돕습니다.</p><span class="tag label r">Private</span></div>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread" aria-labelledby="h-experience">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="grid ltop">
+<div class="th"><h2 class="lg" id="h-experience">Experience</h2><span class="label r t3 ko">대회</span></div>
+<div class="pics">
+<a class="img r11" href="https://one-step-beta.vercel.app"><img src="assets/bw-one-step-chat-1x1.png" width="1070" height="1070" loading="lazy" alt="다시, 한 걸음 화면입니다. 가상 입력 「스물여섯 살, 반년째 구직 중, 월세 부담」에 맞춤 비교를 끝내지 못해 검색된 후보부터 안내한다는 응답과 정책 후보 목록이 나옵니다."></a>
+<a class="img r11" href="https://one-step-beta.vercel.app"><img src="assets/bw-one-step-cards-1x1.png" width="1070" height="1070" loading="lazy" alt="같은 응답의 정책 카드입니다. 2026-09-30 한국 시간 기준 신청 중인 정책 5건 가운데 여주시 청년 주택 임차보증금 대출이자 지원사업과 부산 청년 중개보수 및 이사비 지원이 보입니다."></a>
+<p class="cap">「다시, 한 걸음」 배포판에 가상 입력(만 26세 · 주거)을 넣자 이 응답이 돌아왔습니다(2026.09.30). 맞춤 비교가 끝나지 않아 검색된 후보를 먼저 보여 준 것입니다.</p>
+</div>
+</div>
+<div class="grid entries">
+<div class="entry">
+<div class="row"><span class="title">JunctionX Korea 2026 · Upstage 트랙</span><span class="small num t3">(2026.08.21 – 08.23)</span></div>
+<p>4인 팀에서 「Solar for Bid」의 기획과 AI 파이프라인을 맡았습니다.</p>
+</div>
+<div class="entry">
+<div class="row"><span class="title">MABC 2026</span><span class="small num t3">(2026.08.26 – 09.19)</span></div>
+<p>개인으로 참가해 결선에 올랐고 결선작 「다시, 한 걸음」을 기획했습니다. Hermes 안의 Solar Pro 4에 구현을 지시하고 검증해 포스터 세션에서 발표했습니다.</p>
+<a class="link small" href="https://one-step-beta.vercel.app"><span class="t">one-step-beta.vercel.app</span><svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg></a>
+</div>
+<div class="entry">
+<div class="row"><span class="title">원티드 AI Championship 2026</span><span class="small num t3">(2026.09.06 – 09.20)</span></div>
+<p>5인 팀의 데이터·배치 담당으로 대시보드 집계 쿼리를 썼습니다. 합성 로그와 숫자 대조 스크립트를 고쳐 검증한 뒤 9월 20일에 제출했습니다.</p>
+</div>
+<div class="entry">
+<div class="row"><span class="title">DACON 나라장터 법령 위반 모니터링 AI 경진대회</span><span class="small num t3">(2026.08 – 09)</span></div>
+<p>파인튜닝이 금지된 고정 LLM으로 공고 한 건의 검토 항목 24개를 판정하는 파이프라인을 만들었습니다.</p>
+</div>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread alt" aria-labelledby="h-education">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="grid ltop">
+<div class="th"><h2 class="lg" id="h-education">My<br>Education</h2><span class="label r t3 ko">학력</span></div>
+<div class="pics">
+<div class="fig r11" role="img" aria-label="2023 캡스톤 파이프라인입니다. 댓글 수집(정운), 감정분석 AWS Comprehend(팀원), Superset 대시보드(정운) 순이고, 가운데 결과는 검증 없이 그대로 넘어갔습니다.">
+<div class="f-head"><span class="label r">2023 캡스톤</span><span class="label r">4인 팀</span></div>
+<div class="f-steps">
+<span class="f-step f-on"><b>댓글 수집</b><small>정운</small></span>
+<span class="f-down"><svg viewBox="0 0 48 108" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" aria-hidden="true"><path d="M24 2 V106"/><path d="M24 106 C22 90 12 78 2 74"/><path d="M24 106 C26 90 36 78 46 74"/></svg></span>
+<span class="f-step"><b>감정분석 · AWS Comprehend</b><small>팀원</small></span>
+<span class="f-down"><svg viewBox="0 0 48 108" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" aria-hidden="true"><path d="M24 2 V106"/><path d="M24 106 C22 90 12 78 2 74"/><path d="M24 106 C26 90 36 78 46 74"/></svg></span>
+<span class="f-step f-on"><b>Superset 대시보드</b><small>정운</small></span>
+</div>
+<p class="f-note">가운데 결과는 검증 없이 그대로 넘어갔습니다.</p>
+</div>
+<div class="fig r11" role="img" aria-label="2026년에 다시 만든 평가입니다. 골든셋 198건, 부트스트랩 10,000회에서 SBERT가 무작위 추측보다 높을 확률은 82.8%이고, 단측 p = 0.17로 유의하지 않습니다.">
+<div class="f-head"><span class="label r">2026 다시 만든 평가</span><span class="label r">골든셋 198건</span></div>
+<div class="f-steps f-stat">
+<span class="f-hero">82.8%</span>
+<span class="f-lab">SBERT가 무작위 추측보다 높을 확률입니다. 단측 p = 0.17로 유의하지 않습니다.</span>
+</div>
+<p class="f-note">부트스트랩 10,000회 · macro F1 0.376 (0.307 – 0.443)</p>
+</div>
+</div>
+</div>
+<div class="grid entries">
+<div class="entry">
+<div class="row"><span class="title">한양대학교 ERICA</span><span class="small num t3">(2020.03 – 2026.08)</span></div>
+<p>산업인공지능학과와 ICT융합학부를 복수전공하고 2026년 8월에 졸업했습니다.</p>
+</div>
+<div class="entry">
+<div class="row"><span class="title">LINC 3.0 기업연계 캡스톤</span><span class="small num t3">(2023)</span></div>
+<p>4인 팀 「Slack을 이용한 데이터 리포팅」에서 댓글 수집과 Superset 대시보드, 파이프라인의 양 끝단을 맡았습니다. 감정분석은 그때 맞는지 따져 보지 않았고 2026년에 youtube-sentiment-pipeline으로 다시 만들었습니다.</p>
+</div>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+<section class="spread paper" aria-labelledby="h-contact">
+<div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">01 Oct</span><span class="numeral">2026</span></div></div>
+<div class="th"><h2 class="lg" id="h-contact">Contact</h2><span class="label r t3 ko">연락처</span></div>
+<div class="grid content ct">
+<div class="about">
+<h3 class="heading">정운</h3>
+<p>문서를 다루는 일을 에이전트로 돌리고 그 결과가 정말 맞는지 재는 하네스를 만듭니다.</p>
+</div>
+<div class="cl">
+<span class="label r">My Contacts</span>
+<a class="small" href="https://github.com/serenwoon">github.com/serenwoon</a>
+<a class="small" href="mailto:wjddns5161@gmail.com">wjddns5161@gmail.com</a>
+</div>
+<div class="lv">
+<span class="label r">Live</span>
+<a class="small" href="https://serenwoon.github.io/quote-review/">quote-review</a>
+<a class="small" href="https://serenwoon.github.io/g2b-daily/">g2b-daily</a>
+<a class="small" href="https://star-voyage-sooty.vercel.app">star-voyage</a>
+<a class="small" href="https://star-cards-tau.vercel.app">star-cards</a>
+<a class="small" href="https://one-step-beta.vercel.app">다시, 한 걸음</a>
+</div>
+</div>
+<div class="actions">
+<a class="btn label" href="https://github.com/serenwoon">View GitHub<svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg></a>
+<a class="link small" href="mailto:wjddns5161@gmail.com"><span class="t">메일 보내기</span><svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"/><path d="M156 24 C140 22 128 12 124 2"/><path d="M156 24 C140 26 128 36 124 46"/></svg></a>
+</div>
+<div class="bar foot"><span class="label">정운 JeongWoon</span><span class="label r">Document AI · Harness</span></div>
+</section>
+
+</main>
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.spread').forEach(function (s) {
+    Array.prototype.forEach.call(s.children, function (c, i) { c.style.transitionDelay = (i * 60) + 'ms'; });
+    io.observe(s);
+  });
+})();
+</script>
+</body>
+</html>
