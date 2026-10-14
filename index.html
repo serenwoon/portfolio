@@ -411,8 +411,8 @@ p.f-note { line-height: 1.5; }
 
 <section class="spread deep" aria-labelledby="h-pms">
 <div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">14 Oct</span><span class="numeral">2026</span></div></div>
-<div class="th"><h2 class="lg" id="h-pms">PMS</h2><span class="label r t3 ko">프로젝트 관리 시스템</span></div>
-<p class="eyebrow">에이전트와 개발 · 요청·선택 · v0.6 – v0.40 · 2026.09.28 – 10.13</p>
+<div class="th"><h2 class="lg" id="h-pms">PMS</h2><span class="label r t3 ko">대표작 01 · 프로젝트 관리 시스템</span></div>
+<p class="eyebrow">Featured 01 · 아키텍처 설계 · v0.6 – v0.40 · 2026.09.28 – 10.13</p>
 <div class="grid content feat">
 <figure class="shot pic">
 <div class="img r1610"><img src="assets/bw-pms-dashboard.png" width="1760" height="1100" loading="lazy" alt="PMS v0.40의 대시보드입니다. 왼쪽 메뉴는 잘라 냈습니다. 가상 예시 프로젝트의 공식 공정진척(계획 64.4%, 실적 50.6%, 계획 대비 -13.9%p)과 개발진척(전체 프로그램 20본, 개발완료 30%, 지연 2본), 내 진행 업무, 일정과 마일스톤이 보입니다."></div>
@@ -420,12 +420,12 @@ p.f-note { line-height: 1.5; }
 </figure>
 <div class="side">
 <p class="title">「PMS」는 여러 조직이 계정과 권한을 나눠 함께 쓰도록 만든 프로젝트 관리 웹 시스템입니다. 인터넷 연결 없이 Node.js만으로 띄우는 것을 조건으로 에이전트와 만들고 있습니다.</p>
-<p class="desc">일정(WBS와 간트)과 진척, 요구사항, 산출물, 이슈와 위험, 테스트와 결함, 게시판과 채팅을 한 곳에서 다룹니다. 코드는 Codex와 Claude Code가 썼고 저는 만들 것을 요청하고 갈림길에서 골랐습니다.</p>
+<p class="desc">일정(WBS와 간트)과 진척, 요구사항, 산출물, 이슈와 위험, 테스트와 결함, 게시판과 채팅을 한 곳에서 다룹니다. 아키텍처는 제가 설계했고 개발은 Codex와 Claude Code가 했습니다.</p>
 <p class="desc">판을 낼 때마다 자동 검사를 다시 돌립니다. 몇 판은 고친 범위만 돌렸습니다. 전체 검사는 v0.7의 57건에서 v0.40의 1,217건이 됐습니다. 그 사이 두 번은 Claude에게 평가를 따로 맡겼고, 나온 결함은 일부를 빼고 뒤 판에서 고쳤습니다.</p>
 <div class="kv">
 <div><span class="label r t3">Versions</span><span class="small num">v0.6 – v0.40 · 2026.09.28 – 10.13</span></div>
 <div><span class="label r t3">Checks</span><span class="small num">v0.40 전체 실행 1,217 / 1,217(2026.10.13)</span></div>
-<div><span class="label r t3">Role</span><span class="small">요청·선택(저) · 구현 Codex(v0.6 – v0.37) · Claude Code(v0.38 – v0.40) · 평가 Claude</span></div>
+<div><span class="label r t3">Role</span><span class="small">아키텍처 설계(저) · 개발 Codex(v0.6 – v0.37) · Claude Code(v0.38 – v0.40) · 평가 Claude</span></div>
 <div><span class="label r t3">Repo</span><span class="small">비공개</span></div>
 </div>
 </div>
@@ -493,12 +493,12 @@ p.f-note { line-height: 1.5; }
 <p class="desc">인터넷 없이 돌아야 한다는 조건이라 실행본은 ZIP 하나입니다. 풀어서 Node.js 24.18 이상으로 실행하면 패키지 설치나 CDN 접속 없이 뜹니다. 같은 서버 코드가 Worker 형식(D1)과 Node.js(내장 SQLite) 두 실행 환경에서 돌고, 자동 검사도 두 DB에서 돌립니다. 설치본은 v0.6을 PC 한 대에 한 번 풀어 실행 파일과 DB 파일이 생긴 것까지 확인한 것이 전부이고, 그 뒤 갱신하지 않았습니다.</p>
 </div>
 <div class="memo half">
-<p class="desc">v0.37까지의 코드 작성, 검사 실행, 패키징과 배포는 Codex가 했고 v0.38부터는 Claude Code가 했습니다. 저는 만들 것을 요청하고 갈림길에서 골랐습니다. 모든 역할이 자기가 올린 것을 스스로 승인하지 못하게 한 것, 대시보드 진척은 주마다 저장한 WBS 파일 한 판을 기준으로 삼는 것, 기존 자료를 지우지 않고 새 프로젝트는 빈 상태로 여는 것을 제가 골랐습니다. v0.38에서는 승인할 수 없는 사람의 범위를 현재 담당자와 마지막 승인 뒤 내용을 고친 사람까지 넓히고, 공식 진척 값을 말단 작업의 단순 평균으로 통일하기로 했습니다.</p>
+<p class="desc">아키텍처 설계는 제가 했고 개발은 v0.37까지 Codex가, v0.38부터 Claude Code가 했습니다. 코드 작성, 검사 실행, 패키징과 배포가 개발에 들어갑니다. 모든 역할이 자기가 올린 것을 스스로 승인하지 못하게 한 것, 대시보드 진척은 주마다 저장한 WBS 파일 한 판을 기준으로 삼는 것, 기존 자료를 지우지 않고 새 프로젝트는 빈 상태로 여는 것을 제가 골랐습니다. v0.38에서는 승인할 수 없는 사람의 범위를 현재 담당자와 마지막 승인 뒤 내용을 고친 사람까지 넓히고, 공식 진척 값을 말단 작업의 단순 평균으로 통일하기로 했습니다.</p>
 <div class="kv">
 <div><span class="label r t3">Stack</span><span class="small">프레임워크 없는 JavaScript(ES 모듈) · esbuild · Node.js 내장 SQLite / Worker 형식 · D1</span></div>
 <div><span class="label r t3">Checks</span><span class="small num">v0.40 전체 실행 1,217 / 1,217(2026.10.13)</span></div>
 <div><span class="label r t3">Deploy</span><span class="small">설치본 v0.6을 PC 한 대에 한 번 · 저장소 비공개</span></div>
-<div><span class="label r t3">Role</span><span class="small">요청·선택(저) · 구현·검사·배포 Codex(v0.6 – v0.37) · Claude Code(v0.38 – v0.40) · 평가 Claude</span></div>
+<div><span class="label r t3">Role</span><span class="small">아키텍처 설계(저) · 개발 Codex(v0.6 – v0.37) · Claude Code(v0.38 – v0.40) · 평가 Claude</span></div>
 </div>
 </div>
 </div>
@@ -507,11 +507,11 @@ p.f-note { line-height: 1.5; }
 
 <section class="spread paper" aria-labelledby="h-featured">
 <div class="bar"><span class="label">AI Portfolio</span><div class="date"><span class="label num">14 Oct</span><span class="numeral">2026</span></div></div>
-<div class="th"><h2 class="lg" id="h-featured">Featured</h2><span class="label r t3 ko">대표작</span></div>
+<div class="th"><h2 class="lg" id="h-featured">Featured</h2><span class="label r t3 ko">대표작 02</span></div>
 <div class="grid content feat">
 <a class="img r169 pic" href="https://serenwoon.github.io/quote-review/"><img src="assets/bw-quote-review-16x9.png" width="1400" height="788" loading="lazy" alt="quote-review 화면입니다. 위에 인용 793칸의 자리 분포와 대조 격자, 사람 판정 수가 있고, 아래에 문서 20건 목록과 인용 표가 있습니다."></a>
 <div class="side">
-<span class="numeral">01</span>
+<span class="numeral">02</span>
 <h3 class="heading">quote-review</h3>
 <p class="desc">이 화면에서는 인용 793칸이 원본 PDF에 실제로 있는지 사람이 한 칸씩 확인합니다. 인용은 문서 AI가 공공기관 채용공고에서 뽑았습니다. 대조 격자 여덟 칸과 그 줄의 자리를 나란히 놓고 칸마다 원문에 있는지, 없는지, 판단할 수 없는지 가운데 하나를 고릅니다.</p>
 <p class="title">무작위 스무 칸 중 넷이 격자와 어긋났는데 그중 둘은 격자가 잡을 수 없는 종류였습니다.</p>
@@ -688,11 +688,11 @@ p.f-note { line-height: 1.5; }
 <p class="title">고3부터 은퇴까지 야구 선수 한 명의 삶을 한 달씩 이어가는 브라우저 게임입니다. 훈련과 경기뿐 아니라 계약, 부상, 인간관계, 생활 속 선택이 커리어를 만듭니다.</p>
 <p class="desc">플레이할 수 있는 사건 1,500개, 공개 특성 300개, 칭호 41개가 들어 있습니다. 국내 리그는 가상의 10개 구단이 팀당 144경기와 포스트시즌을 치르고, 드래프트에서는 후보 176명 가운데 110명을 11라운드에 걸쳐 지명합니다.</p>
 <p class="desc">숫자는 시뮬레이션으로 잽니다. 10개 세계를 5년씩 돌려 타율, 출루율, 장타율, 경기당 득점, 평균자책점 같은 지표가 정해 둔 범위를 벗어나면 검사가 실패합니다. 한 세계를 30년 동안 돌려 세대교체 뒤에도 리그가 안정적인지도 확인합니다.</p>
-<p class="desc">코드는 Claude Code와 Codex가 썼고, 저는 무엇을 만들지 정하고 직접 해 보며 고칠 것을 골랐습니다. 게임 이름은 아직 정하지 않아 작업명으로 부릅니다.</p>
+<p class="desc">게임 기획은 제가 했고 개발은 Claude Code와 Codex가 했습니다. 게임 이름은 아직 정하지 않아 작업명으로 부릅니다.</p>
 <div class="kv">
 <div><span class="label r t3">Engine</span><span class="small num">0.31.0 · 2026.10.11</span></div>
 <div><span class="label r t3">Stack</span><span class="small">TypeScript · React · Vite · Vitest · Firebase(로그인과 저장 동기화)</span></div>
-<div><span class="label r t3">Role</span><span class="small">기획·선택(저) · 구현 Claude Code · Codex</span></div>
+<div><span class="label r t3">Role</span><span class="small">게임 기획(저) · 개발 Claude Code · Codex</span></div>
 <div><span class="label r t3">Repo</span><span class="small">비공개 · 배포판은 공개</span></div>
 </div>
 <a class="link small" href="https://baseball-career-sim.vercel.app"><span class="t">baseball-career-sim.vercel.app</span><svg class="arrow" viewBox="0 0 160 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" aria-hidden="true"><path d="M2 24 H156"></path><path d="M156 24 C140 22 128 12 124 2"></path><path d="M156 24 C140 26 128 36 124 46"></path></svg></a>
